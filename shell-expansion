@@ -1,0 +1,71 @@
+#!/usr/bin/env bash
+
+# Expansion is perfomed on the command line after it has been split into tokens.
+# There are seven kinds of expansion performed in the following order:
+# 1. brace expansion
+# 2. tilde expansion
+# 3. parameter and variable expansion
+# 4. arithmetic expansion
+# 5. command substitution
+# 6. word splitting
+# 7. filename expansion
+
+echo "Brace Expansion uses the curly braces \`{}\` to generate arbitrary strings."
+echo "a{d,c,b}e expands to: " a{d,c,b}e
+echo "/usr/local/src/bash/{old,new,dist,bugs} expands to: " /usr/local/src/bash/{old,new,dist,bugs}
+echo ""
+
+echo "Tilde Expansion uses the \`~\` character."
+echo "It is commonly seen with \`~/\` which expands to the users \$HOME directory."
+echo "There are many more ways of using it in section 3.5.2 of the Bash manual."
+echo "\`~/\` expands to: " ~/
+echo ""
+
+echo "Parameter Expansion takes the form \`\${parameter}\` in its most basic use."
+echo "There are many ways of using it documented in section 3.5.3 of the Bash manual."
+echo "The curly braces \`{}\` are optional but serve to protect the variable from characters immediately following it which could be interpreted as a part of the name."
+echo "One example is substring expansion which takes the following forms:"
+echo "\`\${parameter:offset}\`"
+echo "\`\${parameter:offset:length}\`"
+echo ""
+
+echo "Given the variable: \`string=01234567890abcdefgh\`"
+string=01234567890abcdefgh
+echo "\`\${string:7}\` expands to: " ${string:7}
+echo "\`\${string:7:2}\` expands to: " ${string:7:2}
+echo ""
+
+echo "With \`\${parameter:-word}\` if \`parameter\` is unset or null, the expansion of \`word\` is substitued. Otherwise the value of \`parameter\` is substitued."
+echo "Given \`\${color:-red}\`"
+echo "When \`color\` is unset then it expands to: " ${color:-red}
+color=green
+echo "When \`color=green\` it expands to: " ${color:-red}
+echo ""
+
+echo "Parameter Expansion can also transform or show information about \`parameter\`."
+echo "Given the variable \`toUpperCase=loud\`"
+toUpperCase=loud
+echo "\`\${toUpperCase@U}\` will expand to: " ${toUpperCase@U}
+echo ""
+echo "There are many more possible parameter expansions listed in the manual."
+echo ""
+
+echo "Arithmetic Expansion allows evaluation of arithmetic and the substitution of the result."
+echo "The format is \`\$(( expresion ))\`".
+echo "\`\$(( 40 + 2 ))\` expands to: " $(( 40 + 2))
+echo ""
+
+echo "Command Substitution allows the output of a command to replace the command itself."
+echo "The form is \`\$(command)\` or \`\`command\`\`."
+echo "\`\$(pwd)\` expands to: $(pwd)"
+echo ""
+
+echo "Process substitution allows a process's input or output to be referred to using a filename."
+echo "Process substitution takes the form \`<(list)\` or \`>(list)\`."
+echo "Process substitution is performed simultaneously with parameter and variable expansion, command substitution, and arithmetic expansion."
+echo ""
+
+echo "Word Splitting happens on the results of parameter expansion, command substitution, and arithmetic expansion that did not occur in double quotes."
+echo ""
+
+

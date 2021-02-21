@@ -1,0 +1,26 @@
+= Bash Shell Expansion
+
+A Bash script for quickly demonstrating how shell expansion <<bm>> works.
+
+== Usage
+
+This script is intended to be run with Bash although it should work with any other POSIX compatable shell.
+
+It can be run with the shell itself.
+
+Or make the script executable then run it:
+
+[source,shell]
+----
+$ chmod +x shell-expansion
+$ ./shell-expansion
+----
+
+== This Repository is in the Public Domain
+
+This repository is in the public domain. See the UNLICENSE file for details.
+
+[bibliography]
+== References
+
+* [[[bm]]] https://www.gnu.org/software/bash/manual/html_node/Shell-Expansions.html[Shell Expansions]
